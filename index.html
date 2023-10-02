@@ -28,6 +28,9 @@
         <!-- Records will be displayed here -->
     </ul>
 
+    <table border="1" id="recordTable" style="border-spacing: 0px;">
+    </table>
+
     <script>
         function saveRecord() {
             const websiteName = document.getElementById('websiteName').value;
@@ -83,11 +86,11 @@
     const recordTable = document.getElementById('recordTable');
 
     // Clear existing table rows
-    recordTable.innerHTML = 'uhfytfytggfyujh';
+    recordTable.innerHTML = '';
 
     // Create table header
     const tableHeader = document.createElement('thead');
-    tableHeader.innerHTML = `<tr><th>Website Name</th><th>Email</th><th>Username</th><th>Password</th><th>Website Link</th></tr>`;
+    tableHeader.innerHTML = `<tr><th>Website Name</th><th>Email</th><th>Username</th><th>Password</th><th>Website Link</th><th>Action</th></tr>`;
     recordTable.appendChild(tableHeader);
 
     // Create table body
@@ -96,13 +99,17 @@
     // Populate the table with records
     records.forEach(record => {
         const row = document.createElement('tr');
-        row.innerHTML = `<td>${record.websiteName}</td><td>${record.email}</td><td>${record.username}</td><td>${record.password}</td><td>${record.websiteLink}</td>`;
+        row.innerHTML = `<td>${record.websiteName}</td><td>${record.email}</td><td>${record.username}</td><td>${record.password}</td><td>${record.websiteLink}</td><td onClick="editRecord(${record})"><button>Edit</button></td>`;
         tableBody.appendChild(row);
     });
 
     recordTable.appendChild(tableBody);
 }
 
+        function editRecord(recordData){
+            console.log('recordData');
+            console.log(recordData);
+        }
 
         // Display saved records on page load
         displayRecords();

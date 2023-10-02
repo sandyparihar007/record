@@ -99,7 +99,7 @@
     // Populate the table with records
     records.forEach(record => {
         const row = document.createElement('tr');
-        row.innerHTML = `<td>${record.websiteName}</td><td>${record.email}</td><td>${record.username}</td><td>${record.password}</td><td>${record.websiteLink}</td><td onClick="editRecord(${record})"><button>Edit</button></td>`;
+        row.innerHTML = `<td>${record.websiteName}</td><td>${record.email}</td><td>${record.username}</td><td>${record.password}</td><td>${record.websiteLink}</td><td onClick="console.log(${record})"><button>Edit</button></td>`;
         tableBody.appendChild(row);
     });
 

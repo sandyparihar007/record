@@ -12,6 +12,9 @@
     <label for="email">Email:</label>
     <input type="email" id="email" placeholder="Enter email"><br><br>
 
+    <label for="user">User Name:</label>
+    <input type="text" id="user" placeholder="Enter User name"><br><br>
+
     <label for="password">Password:</label>
     <input type="password" id="password" placeholder="Enter password"><br><br>
 
@@ -29,12 +32,14 @@
         function saveRecord() {
             const websiteName = document.getElementById('websiteName').value;
             const email = document.getElementById('email').value;
+            const user = document.getElementById('user').value;
             const password = document.getElementById('password').value;
             const websiteLink = document.getElementById('websiteLink').value;
 
             const record = {
                 websiteName: websiteName,
                 email: email,
+                user: user,
                 password: password,
                 websiteLink: websiteLink
             };
@@ -68,7 +73,7 @@
             // Display each record
             records.forEach(record => {
                 const listItem = document.createElement('li');
-                listItem.textContent = `Website: ${record.websiteName}, Email: ${record.email}, Link: ${record.websiteLink}`;
+                listItem.textContent = `Website: ${record.websiteName}, Email: ${record.email}, Username: ${record.user}, Password: ${record.password}, Link: ${record.websiteLink}`;
                 recordList.appendChild(listItem);
             });
         }

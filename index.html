@@ -63,20 +63,60 @@
             displayRecords();
         }
 
+        // function displayRecords() {
+        //     const records = JSON.parse(localStorage.getItem('records')) || [];
+        //     const recordList = document.getElementById('recordList');
+
+        //     // Clear existing list items
+        //     recordList.innerHTML = '';
+
+        //     // Display each record
+        //     records.forEach(record => {
+        //         const listItem = document.createElement('li');
+        //         listItem.textContent = `Website: ${record.websiteName}, Email: ${record.email}, Username: ${record.user}, Password: ${record.password}, Link: ${record.websiteLink}`;
+        //         recordList.appendChild(listItem);
+        //     });
+        // }
+
         function displayRecords() {
-            const records = JSON.parse(localStorage.getItem('records')) || [];
-            const recordList = document.getElementById('recordList');
+    const records = JSON.parse(localStorage.getItem('records')) || [];
+    const recordTable = document.getElementById('recordTable');
 
-            // Clear existing list items
-            recordList.innerHTML = '';
+    // Clear existing table rows
+    recordTable.innerHTML = '';
 
-            // Display each record
-            records.forEach(record => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `Website: ${record.websiteName}, Email: ${record.email}, Username: ${record.user}, Password: ${record.password}, Link: ${record.websiteLink}`;
-                recordList.appendChild(listItem);
-            });
-        }
+    // Create table header
+    const tableHeader = document.createElement('thead');
+    tableHeader.innerHTML = `
+        <tr>
+            <th>Website Name</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Website Link</th>
+        </tr>
+    `;
+    recordTable.appendChild(tableHeader);
+
+    // Create table body
+    const tableBody = document.createElement('tbody');
+
+    // Populate the table with records
+    records.forEach(record => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${record.websiteName}</td>
+            <td>${record.email}</td>
+            <td>${record.username}</td>
+            <td>${record.password}</td>
+            <td>${record.websiteLink}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+
+    recordTable.appendChild(tableBody);
+}
+
 
         // Display saved records on page load
         displayRecords();

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Record Keeper</title>
+</head>
+<body>
+    <h1>Record Keeper</h1>
+
+    <label for="websiteName">Website Name:</label>
+    <input type="text" id="websiteName" placeholder="Enter website name"><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Enter email"><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Enter password"><br><br>
+
+    <label for="websiteLink">Website Link:</label>
+    <input type="url" id="websiteLink" placeholder="Enter website link"><br><br>
+
+    <button onclick="saveRecord()">Save Record</button>
+
+    <h2>Saved Records</h2>
+    <ul id="recordList">
+        <!-- Records will be displayed here -->
+    </ul>
+
+    <script>
+        function saveRecord() {
+            const websiteName = document.getElementById('websiteName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const websiteLink = document.getElementById('websiteLink').value;
+
+            const record = {
+                websiteName: websiteName,
+                email: email,
+                password: password,
+                websiteLink: websiteLink
+            };
+
+            // Retrieve existing records or initialize an empty array
+            const records = JSON.parse(localStorage.getItem('records')) || [];
+
+            // Add the new record to the array
+            records.push(record);
+
+            // Save the updated array back to localStorage
+            localStorage.setItem('records', JSON.stringify(records));
+
+            // Clear input fields
+            document.getElementById('websiteName').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('websiteLink').value = '';
+
+            // Update the displayed records
+            displayRecords();
+        }
+
+        function displayRecords() {
+            const records = JSON.parse(localStorage.getItem('records')) || [];
+            const recordList = document.getElementById('recordList');
+
+            // Clear existing list items
+            recordList.innerHTML = '';
+
+            // Display each record
+            records.forEach(record => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `Website: ${record.websiteName}, Email: ${record.email}, Link: ${record.websiteLink}`;
+                recordList.appendChild(listItem);
+            });
+        }
+
+        // Display saved records on page load
+        displayRecords();
+    </script>
+</body>
+</html>

@@ -87,15 +87,7 @@
 
     // Create table header
     const tableHeader = document.createElement('thead');
-    tableHeader.innerHTML = `
-        <tr>
-            <th>Website Name</th>
-            <th>Email</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>Website Link</th>
-        </tr>
-    `;
+    tableHeader.innerHTML = `<tr><th>Website Name</th><th>Email</th><th>Username</th><th>Password</th><th>Website Link</th></tr>`;
     recordTable.appendChild(tableHeader);
 
     // Create table body
@@ -104,13 +96,7 @@
     // Populate the table with records
     records.forEach(record => {
         const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${record.websiteName}</td>
-            <td>${record.email}</td>
-            <td>${record.username}</td>
-            <td>${record.password}</td>
-            <td>${record.websiteLink}</td>
-        `;
+        row.innerHTML = `<td>${record.websiteName}</td><td>${record.email}</td><td>${record.username}</td><td>${record.password}</td><td>${record.websiteLink}</td>`;
         tableBody.appendChild(row);
     });
 
